@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Rock Paper Scissors</title>
+        <style rel="stylesheet" href="style.css"></style>
+    </head>
+
+    <body>
+      
+        <h2>Welcome to the Rock Paper Scissors World Championships!</h2>
+        <form onsubmit="rpsExecute()">
+            <p>Please enter your selection below and hit enter:</p>
+            <input class="userInput"> 
+            <input type="submit" value="Throw Down!">
+        </form>
+        
+        <!--<button onclick='cpuTurn(); compareResults()' id="start">Let's Play!</button>-->
+        
+        <script> 
+
+        let playerEntry = document.querySelector('.userInput');
+
+        function computerPlay() {
+            return Math.floor(Math.random()*3)+1; //returns random integer 1 to 3
+            }  
+        
+        function computerResult() {
+            if (computerPlay() == 1) {
+                return 'rock'; //assigns value of 1 from above to equal 'rock'
+            } else if (computerPlay() == 2) {
+                return 'paper'; //assigns value of 2 from above to equal 'paper'
+            } else {
+                return 'scissors'; //assigns all other values (only 3 is possible) from above to equal 'scissors'
+            }
+        }
+
+        /*function cpuTurn() {
+            alert ('Your opponent has chosen ' + computerResult() + '!'); //notifies player of opponent's move
+        }*/
+
+        function rpsExecute() {
+            let playerChoice = playerEntry.value;
+            if (playerChoice == computerResult()) {
+                alert('You have tied your opponent!');
+            } else if (playerChoice == 'rock' && computerResult() == 'paper') {
+                alert('You lose! Paper covers Rock!');
+            } else if (playerChoice == 'rock' && computerResult() == 'scissors') {
+                alert('You win! Rock smashes Scissors!');
+            } else if (playerChoice == 'paper' && computerResult() == 'scissors') {
+                alert('You lose! Scissors cut Paper!');
+            } else if (playerChoice == 'paper' && computerResult() == 'rock') {
+                alert('You win! Rock covers Scissors!');
+            } else if (playerChoice == 'scissors' && computerResult() == 'rock') {
+                alert('You lose! Rock smashes Scissors');
+            } else if (playerChoice == 'scissors' && computerResult() == 'paper') {
+                alert('You win! Scissors cut Paper!');
+            }
+        }
+
+        </script>
+
+    </body>
+</html>
